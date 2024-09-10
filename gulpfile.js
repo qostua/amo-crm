@@ -34,6 +34,7 @@ const Paths = {
 
 import gulp from 'gulp';
 import sync from 'browser-sync';
+import { createProxyMiddleware }  from 'http-proxy-middleware';
 import {deleteAsync} from 'del';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
@@ -81,7 +82,14 @@ export const server = () => {
     notify: false,
     server: {
       baseDir: "app",
-    }
+    },
+    middleware: [
+      createProxyMiddleware({
+        pathFilter: '/api',
+        target: 'https://qostua.amocrm.ru',  // Ваш домен API
+        changeOrigin: true,  // Подмена Origin заголовка для CORS
+      })
+    ]
   });
 };
 
