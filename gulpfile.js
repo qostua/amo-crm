@@ -94,9 +94,9 @@ export const server = () => {
 };
 
 export const watch = () => {
-  gulp.watch(Paths.Source.HTML, html);
-  gulp.watch(Paths.Source.SCSS, css);
-  gulp.watch(Paths.Source.JS, js);
+  gulp.watch('./src/index.html', html);
+  gulp.watch('./src/scss/*/**', css);
+  gulp.watch('./src/js/*/**', js);
 
   gulp.watch('app/**/*', (cb) => {
     sync.reload();
