@@ -8,7 +8,70 @@
 
   <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body class="page">
+<main class="page__main container">
+  <h1 class="page__title">
+    Сделки
+  </h1>
+
+  <div class="page__content">
+    <section class="offers">
+      <table class="offers__table">
+        <tr>
+          <th>#</th>
+          <th>Название</th>
+          <th>Бюджет</th>
+          <th>ID</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Разработка веб-сайта для компании "TechSolutions"</td>
+          <td>15 000 $</td>
+          <td>474331</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Продажа ПО для автоматизации бизнеса "OptiSoft"</td>
+          <td>8 500 $</td>
+          <td>174331</td>
+        </tr>
+        <tr class="active">
+          <td>3</td>
+          <td>Интеграция e-commerce платформы для "ShopPro"</td>
+          <td>12 000 $</td>
+          <td>124321</td>
+        </tr>
+      </table>
+    </section>
+
+    <div class="select-offer select-offer--active">
+      <div class="select-offer__content">
+        <h2 class="select-offer__title">
+          Разработка веб-сайта для компании "TechSolutions"
+        </h2>
+
+        <dl class="select-offer__data">
+          <div>
+            <dt>ID</dt>
+            <dd>474331</dd>
+          </div>
+          <div>
+            <dt>Дата</dt>
+            <dd>12.12.2024</dd>
+          </div>
+          <div>
+            <dt>Статус</dt>
+            <dd>Готово</dd>
+          </div>
+        </dl>
+      </div>
+
+      <p class="select-offer__plug">
+        Выберите сделку, чтобы посмотреть подробности
+      </p>
+    </div>
+  </div>
+</main>
 
 <script src="/js/bundle.js"></script>
 </body>

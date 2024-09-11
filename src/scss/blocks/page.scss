@@ -1,0 +1,25 @@
+.page {
+  font-family: Montserrat, Arial, sans-serif;
+}
+
+.page__main {
+  padding-top: var(--space--l);
+  padding-bottom: var(--space--l);
+}
+
+.page__title {
+  font-size: var(--font-size--xxl);
+  line-height: 150%;
+  font-weight: 700;
+
+  margin-bottom: var(--space--m);
+
+  color: var(--accent);
+}
+
+.page__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space--m);
+  align-items: flex-start;
+}
