@@ -44,12 +44,11 @@ export default class AmoCrmApiService {
     const urlParams = new URLSearchParams(params);
 
     urlObject.search = urlParams.toString();
-
-    const mode = 'no-cors';
+  
 
     const response = await fetch(
       urlObject,
-      {method, body, headers, mode},
+      {method, body, headers},
     );
 
     try {

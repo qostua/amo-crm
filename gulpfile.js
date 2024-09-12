@@ -91,8 +91,8 @@ export const server = () => {
     middleware: [
       createProxyMiddleware({
         pathFilter: '/api',
-        target: 'https://qostua.amocrm.ru',  // Ваш домен API
-        changeOrigin: true,  // Подмена Origin заголовка для CORS
+        target: 'https://qostua.amocrm.ru',
+        changeOrigin: true,
       })
     ]
   });
@@ -153,7 +153,7 @@ export const jsProd = () => {
     .pipe(webpackStream(webpackProdConfig))
     .pipe(replace(
       'http://localhost:3000/api/v4',
-      'https://qostua.amocrm.ru/api/v4'
+      'https://amo-crm.free.beeceptor.com/api/v4'
     ))
     .pipe(gulp.dest(Paths.Prod.JS));
 };
