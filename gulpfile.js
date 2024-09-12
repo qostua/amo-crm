@@ -151,6 +151,10 @@ export const cssProd = () => {
 export const jsProd = () => {
   return gulp.src(Paths.Source.JS)
     .pipe(webpackStream(webpackProdConfig))
+    .pipe(replace(
+      'http://localhost:3000/api/v4',
+      'https://qostua.amocrm.ru/api/v4'
+    ))
     .pipe(gulp.dest(Paths.Prod.JS));
 };
 
