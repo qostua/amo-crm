@@ -4,7 +4,7 @@
 
 **project tegs**: `HTML5`, `CSS3`, `ES`, `Fetch`, `OOP`, `webpack`, `Gulp`, `Performance`
 
-**lighthouse scores**: ✅ Performance `100` | ✅ Accessibility `100` | ✅ Best Practices `100` | ✅ SEO `
+**lighthouse scores**: ✅ Performance `100` | ✅ Accessibility `100` | ✅ Best Practices `100` | ✅ SEO `100`
 
 ![Lighthouse Scores и интерфейс сайта](https://github.com/user-attachments/assets/058f7bee-7cb4-4cdd-8312-8757b792b62d)
 
