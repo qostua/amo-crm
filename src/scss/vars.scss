@@ -1,19 +1,18 @@
 :root {
   --primary: #FFFFFF;
-
-  --accent: #007bff;
-
+  --accent: #004ea9;
   --accent-light: rgba(0, 123, 255, 0.2);
   --grey-light: rgba(211, 211, 211, 0.3);
 
-  --base-radius: 4px;
-
-  --base-fs: 16px;
+  --error: #FF3D12;
+  --warning: #E6B60A;
+  --success: #6FCF0F;
 
   --font-size--xxl: 32px;
   --font-size--xl: 24px;
   --font-size--l: 20px;
   --font-size--m: 16px;
+  --font-size--s: 12px;
 
   --space--xl: 64px;
   --space--l: 32px;
@@ -24,10 +23,4 @@
   --radius--l: 16px;
   --radius--m: 8px;
   --radius--s: 4px;
-
-  --box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.20);
-
-  --error: #FF3D12;
-  --warning: #E6B60A;
-  --success: #6FCF0F;
 }
