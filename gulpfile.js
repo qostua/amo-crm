@@ -33,6 +33,7 @@ const Paths = {
 }
 
 import gulp from 'gulp';
+import htmlMin from 'gulp-htmlmin';
 import sync from 'browser-sync';
 import { createProxyMiddleware }  from 'http-proxy-middleware';
 import {deleteAsync} from 'del';
@@ -41,8 +42,12 @@ import gulpSass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
+import csso from 'postcss-csso';
+import cssRemoveComments from 'postcss-discard-comments';
 import sourcemaps from 'gulp-sourcemaps';
 import webpackStream from 'webpack-stream';
+import replace from 'gulp-replace';
+import rename from 'gulp-rename';
 import webpackDevConfig from './webpack.development.config.js';
 import webpackProdConfig from './webpack.production.config.js';
 
@@ -95,8 +100,8 @@ export const server = () => {
 
 export const watch = () => {
   gulp.watch('./src/index.html', html);
-  gulp.watch('./src/scss/*/**', css);
-  gulp.watch('./src/js/*/**', js);
+  gulp.watch('./src/scss/**/*.scss', css);
+  gulp.watch('./src/js/**/*.js', js);
 
   gulp.watch('app/**/*', (cb) => {
     sync.reload();
@@ -116,3 +121,58 @@ export default gulp.series(
     server,
   ),
 );
+
+export const htmlProd = () => {
+  return gulp.src(Paths.Source.HTML)
+    .pipe(replace(
+      /(<link rel="stylesheet" href=".*?)(.css">)/g,
+      '$1.min$2'
+    ))
+    .pipe(htmlMin({
+      removeComments: true,
+      collapseWhitespace: true,
+    }))
+    .pipe(gulp.dest(Paths.Prod.HTML, {base: './src/'}))
+}
+
+export const cssProd = () => {
+  return gulp.src(Paths.Source.SCSS)
+    .pipe(sassGlob())
+    .pipe(sass())
+    .pipe(postcss([
+      csso,
+      autoprefixer,
+      cssRemoveComments({removeAll: true})
+    ]))
+    .pipe(rename("main.min.css"))
+    .pipe(gulp.dest(Paths.Prod.CSS))
+};
+
+export const jsProd = () => {
+  return gulp.src(Paths.Source.JS)
+    .pipe(webpackStream(webpackProdConfig))
+    .pipe(gulp.dest(Paths.Prod.JS));
+};
+
+export const cleanProd = () => {
+  return deleteAsync(PROD_PATH);
+};
+
+export const prod = gulp.series(
+  cleanProd,
+  gulp.parallel(
+    htmlProd,
+    cssProd,
+    jsProd,
+  )
+);
+
+export const serverProd = () => {
+  sync.init({
+    ui: false,
+    notify: false,
+    server: {
+      baseDir: 'prod'
+    }
+  });
+};
