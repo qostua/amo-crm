@@ -153,7 +153,7 @@ export const jsProd = () => {
     .pipe(webpackStream(webpackProdConfig))
     .pipe(replace(
       'http://localhost:3000/api/v4',
-      'https://amo-crm.free.beeceptor.com/api/v4'
+      'https://qostua.free.beeceptor.com/api/v4'
     ))
     .pipe(gulp.dest(Paths.Prod.JS));
 };
